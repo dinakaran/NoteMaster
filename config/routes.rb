@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'share_controller/new'
   resources :notes
 
   devise_for :users
