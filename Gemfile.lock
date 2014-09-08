@@ -95,6 +95,7 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    refills (0.0.2)
     rolify (3.4.0)
     rspec-core (3.0.1)
       rspec-support (~> 3.0.0)
@@ -161,6 +162,7 @@ DEPENDENCIES
   puma
   pundit
   rails (= 4.1.1)
+  refills
   rolify
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)

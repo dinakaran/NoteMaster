@@ -4,12 +4,16 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+       @share = Share.new
+  @receivers = User.where.not(id: current_user.id).pluck(:email, :id)
     @notes = Note.all
   end
 
   # GET /notes/1
   # GET /notes/1.json
   def show
+   @share = Share.new
+  @receivers = User.where.not(id: current_user.id).pluck(:email, :id)
   end
 
   # GET /notes/new
@@ -19,6 +23,7 @@ class NotesController < ApplicationController
 
   # GET /notes/1/edit
   def edit
+    authorize @note
   end
 
   # POST /notes
@@ -40,6 +45,7 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1
   # PATCH/PUT /notes/1.json
   def update
+    authorize @note
     respond_to do |format|
       if @note.update(note_params)
         format.html { redirect_to @note, notice: 'Note was successfully updated.' }
@@ -54,12 +60,18 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
+    authorize @note
     @note.destroy
     respond_to do |format|
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
+  def shared
+    @notes = Note.includes(:shares).where("shares.receiver_id" => current_user.id)
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

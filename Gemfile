@@ -38,7 +38,7 @@ gem 'pundit'
 #frontend
 gem 'neat'
 gem 'bourbon'
-
+gem 'refills'
 #use puma as webserver
 gem 'puma'
 # Use ActiveModel has_secure_password

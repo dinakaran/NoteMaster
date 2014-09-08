@@ -1,0 +1,10 @@
+
+<h2>Notes Shared with you</h2>
+   <% if @notes.present? %>
+  <% @notes.each do |note| %>
+    <%= render 'refills/comment', note: note %>
+<% end %>
+<% else %>
+  <p>Sorry no notes shared with you</p>
+
+<% end %>

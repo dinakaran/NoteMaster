@@ -15,7 +15,6 @@
     <%= f.hidden_field :owner_id, value: current_user %>
 
   <div class="field">
-    <%= f.label "Share this note with" %><br>
     <%= f.select :receiver_id, @receivers  %>
   </div>
   <div class="actions">

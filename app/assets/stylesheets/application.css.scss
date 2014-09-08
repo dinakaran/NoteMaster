@@ -17,4 +17,8 @@
 @import "base/base";
 @import "neat";
 
+/*importing custom refills*/
 
+@import 'refills/modal';
+@import 'refills/comment';
+@import 'refills/navigation';

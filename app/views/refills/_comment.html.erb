@@ -1,0 +1,16 @@
+<div class="comment">
+
+  <div class="comment-content">
+    <h1><%= link_to note.name, note %></h1>
+    <p><%= note.description %></p>
+    <p class="comment-detail"><%= note.created_at.strftime("%b %d %Y") %></p>
+    <p class="comment-detail">Author <%= note.user.email %></p>
+
+    <% if policy(note).update? %>
+    <%= link_to 'Edit', edit_note_path(note) %>
+    <%= link_to 'Destroy', note_path(note), method: :delete, data: {confirmation: "Are you sure you want to delete the note"} %>
+    <% end %>
+
+  </div>
+</div>
+

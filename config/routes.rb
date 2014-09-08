@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'notes#index'
+   root 'dashboard#index'
   resources :notes do
     resources :shares, only: [:new, :create]
   end
+  get 'shared/notes' => 'notes#shared', as: :shared_notes
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
