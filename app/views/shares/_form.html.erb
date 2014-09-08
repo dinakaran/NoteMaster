@@ -1,0 +1,24 @@
+<%= form_for([@note, @share]) do |f| %>
+  <% if @share.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@share.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+      <% @share.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= f.hidden_field :note_id, value: @note.id %>
+    <%= f.hidden_field :owner_id, value: current_user %>
+
+  <div class="field">
+    <%= f.label "Share this note with" %><br>
+    <%= f.select :receiver_id, @receivers  %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Share" %>
+  </div>
+<% end %>

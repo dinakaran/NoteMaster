@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'share_controller/new'
-  resources :notes
+
+  get 'dashboard' => 'dashboard#index', as: :dashboard
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root 'notes#index'
-
+  resources :notes do
+    resources :shares, only: [:new, :create]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
